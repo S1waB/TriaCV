@@ -1,0 +1,76 @@
+{
+  "sprint": "Sprint 2 - Classical Modeling Baseline",
+  "best_model": "Logistic Regression",
+  "models_evaluated": [
+    "Logistic Regression",
+    "Linear SVM",
+    "Naive Bayes",
+    "Random Forest"
+  ],
+  "metrics": {
+    "Logistic Regression": {
+      "model_name": "Logistic Regression",
+      "accuracy": 1.0,
+      "precision_macro": 1.0,
+      "precision_weighted": 1.0,
+      "recall_macro": 1.0,
+      "recall_weighted": 1.0,
+      "f1_macro": 1.0,
+      "f1_weighted": 1.0,
+      "num_test_samples": 250,
+      "total_inference_time_sec": 0.0009949207305908203,
+      "avg_latency_ms_per_cv": 0.003979682922363281,
+      "cv_f1_macro_mean": 1.0,
+      "cv_f1_macro_std": 0.0,
+      "train_time_sec": 0.22201967239379883
+    },
+    "Linear SVM": {
+      "model_name": "Linear SVM",
+      "accuracy": 1.0,
+      "precision_macro": 1.0,
+      "precision_weighted": 1.0,
+      "recall_macro": 1.0,
+      "recall_weighted": 1.0,
+      "f1_macro": 1.0,
+      "f1_weighted": 1.0,
+      "num_test_samples": 250,
+      "total_inference_time_sec": 0.014287710189819336,
+      "avg_latency_ms_per_cv": 0.057150840759277344,
+      "cv_f1_macro_mean": 1.0,
+      "cv_f1_macro_std": 0.0,
+      "train_time_sec": 1.248952865600586
+    },
+    "Naive Bayes": {
+      "model_name": "Naive Bayes",
+      "accuracy": 1.0,
+      "precision_macro": 1.0,
+      "precision_weighted": 1.0,
+      "recall_macro": 1.0,
+      "recall_weighted": 1.0,
+      "f1_macro": 1.0,
+      "f1_weighted": 1.0,
+      "num_test_samples": 250,
+      "total_inference_time_sec": 0.0013573169708251953,
+      "avg_latency_ms_per_cv": 0.005429267883300781,
+      "cv_f1_macro_mean": 1.0,
+      "cv_f1_macro_std": 0.0,
+      "train_time_sec": 0.010039329528808594
+    },
+    "Random Forest": {
+      "model_name": "Random Forest",
+      "accuracy": 1.0,
+      "precision_macro": 1.0,
+      "precision_weighted": 1.0,
+      "recall_macro": 1.0,
+      "recall_weighted": 1.0,
+      "f1_macro": 1.0,
+      "f1_weighted": 1.0,
+      "num_test_samples": 250,
+      "total_inference_time_sec": 0.03060746192932129,
+      "avg_latency_ms_per_cv": 0.12242984771728517,
+      "cv_f1_macro_mean": 1.0,
+      "cv_f1_macro_std": 0.0,
+      "train_time_sec": 0.2034287452697754
+    }
+  }
+}
