@@ -1,0 +1,156 @@
+{
+  "total_samples": 1250,
+  "num_categories": 25,
+  "categories": [
+    "Electrical Engineering",
+    "DotNet Developer",
+    "Health and fitness",
+    "PMO",
+    "Java Developer",
+    "Database",
+    "HR",
+    "Data Science",
+    "Advocate",
+    "Blockchain",
+    "Operations Manager",
+    "Business Analyst",
+    "Testing",
+    "ETL Developer",
+    "Hadoop",
+    "Web Designing",
+    "Python Developer",
+    "Mechanical Engineer",
+    "Automation Testing",
+    "Network Security Engineer",
+    "Arts",
+    "Civil Engineer",
+    "DevOps Engineer",
+    "SAP Developer",
+    "Sales"
+  ],
+  "category_distribution": {
+    "Electrical Engineering": 50,
+    "DotNet Developer": 50,
+    "Health and fitness": 50,
+    "PMO": 50,
+    "Java Developer": 50,
+    "Database": 50,
+    "HR": 50,
+    "Data Science": 50,
+    "Advocate": 50,
+    "Blockchain": 50,
+    "Operations Manager": 50,
+    "Business Analyst": 50,
+    "Testing": 50,
+    "ETL Developer": 50,
+    "Hadoop": 50,
+    "Web Designing": 50,
+    "Python Developer": 50,
+    "Mechanical Engineer": 50,
+    "Automation Testing": 50,
+    "Network Security Engineer": 50,
+    "Arts": 50,
+    "Civil Engineer": 50,
+    "DevOps Engineer": 50,
+    "SAP Developer": 50,
+    "Sales": 50
+  },
+  "raw_text_metrics": {
+    "avg_char_length": 2016.8656,
+    "median_char_length": 2015.0,
+    "avg_word_count": 257.9616,
+    "min_word_count": 236,
+    "max_word_count": 281
+  },
+  "clean_text_metrics": {
+    "avg_char_length": 1714.7928,
+    "median_char_length": 1712.0,
+    "avg_word_count": 201.868,
+    "min_word_count": 181,
+    "max_word_count": 223,
+    "total_tokens": 252335,
+    "unique_vocab_size": 606,
+    "top_20_words": [
+      {
+        "word": "enterprise",
+        "count": 4155
+      },
+      {
+        "word": "professional",
+        "count": 3750
+      },
+      {
+        "word": "science",
+        "count": 2965
+      },
+      {
+        "word": "project",
+        "count": 2931
+      },
+      {
+        "word": "workflow",
+        "count": 2793
+      },
+      {
+        "word": "result",
+        "count": 2500
+      },
+      {
+        "word": "experience",
+        "count": 2500
+      },
+      {
+        "word": "high",
+        "count": 2500
+      },
+      {
+        "word": "technical",
+        "count": 2500
+      },
+      {
+        "word": "skill",
+        "count": 2500
+      },
+      {
+        "word": "2020",
+        "count": 2500
+      },
+      {
+        "word": "successfully",
+        "count": 2500
+      },
+      {
+        "word": "day",
+        "count": 2500
+      },
+      {
+        "word": "engineer",
+        "count": 2250
+      },
+      {
+        "word": "engineering",
+        "count": 2075
+      },
+      {
+        "word": "solution",
+        "count": 1890
+      },
+      {
+        "word": "system",
+        "count": 1886
+      },
+      {
+        "word": "security",
+        "count": 1712
+      },
+      {
+        "word": "pipeline",
+        "count": 1702
+      },
+      {
+        "word": "operation",
+        "count": 1667
+      }
+    ]
+  }
+}
