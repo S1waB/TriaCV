@@ -1,9 +1,13 @@
-"""Multi-format resume document text extractor supporting PDF, DOCX, and TXT files."""
+﻿"""Multi-format resume document text extractor.
+
+Supports PDF (via pdfplumber), DOCX (python-docx), and TXT files.
+"""
 import io
 import os
 from typing import BinaryIO, Union
 
-import pypdf
+import pdfplumber
+
 try:
     import docx
 except ImportError:
@@ -11,43 +15,55 @@ except ImportError:
 
 
 class ResumeExtractor:
-    """Extract raw text from PDF, DOCX, and TXT file uploads."""
+    """Extract raw text from PDF, DOCX, and TXT resume files."""
 
     @staticmethod
-    def extract_from_pdf(file_source: Union[str, BinaryIO, bytes]) -> str:
-        """Extract text content from a PDF file path or stream."""
+    def extract_from_pdf(file_source: Union[str, "os.PathLike[str]", BinaryIO, bytes]) -> str:
+        """Extract text from a PDF using pdfplumber (layout-aware extraction).
+
+        Args:
+            file_source: File path, byte string, or file-like object.
+
+        Returns:
+            Concatenated text from all pages.
+        """
         text_parts = []
         try:
             if isinstance(file_source, (str, os.PathLike)):
-                with open(file_source, "rb") as f:
-                    reader = pypdf.PdfReader(f)
-                    for page in reader.pages:
+                with pdfplumber.open(file_source) as pdf:
+                    for page in pdf.pages:
                         page_text = page.extract_text()
                         if page_text:
                             text_parts.append(page_text)
             elif isinstance(file_source, bytes):
-                stream = io.BytesIO(file_source)
-                reader = pypdf.PdfReader(stream)
-                for page in reader.pages:
-                    page_text = page.extract_text()
-                    if page_text:
-                        text_parts.append(page_text)
+                with pdfplumber.open(io.BytesIO(file_source)) as pdf:
+                    for page in pdf.pages:
+                        page_text = page.extract_text()
+                        if page_text:
+                            text_parts.append(page_text)
             else:
-                reader = pypdf.PdfReader(file_source)
-                for page in reader.pages:
-                    page_text = page.extract_text()
-                    if page_text:
-                        text_parts.append(page_text)
-        except Exception as e:
-            raise ValueError(f"Failed to extract text from PDF: {str(e)}") from e
+                with pdfplumber.open(file_source) as pdf:
+                    for page in pdf.pages:
+                        page_text = page.extract_text()
+                        if page_text:
+                            text_parts.append(page_text)
+        except Exception as exc:
+            raise ValueError(f"Failed to extract text from PDF: {exc}") from exc
 
         return "\n".join(text_parts).strip()
 
     @staticmethod
-    def extract_from_docx(file_source: Union[str, BinaryIO, bytes]) -> str:
-        """Extract text content from a DOCX document."""
+    def extract_from_docx(file_source: Union[str, "os.PathLike[str]", BinaryIO, bytes]) -> str:
+        """Extract text from a DOCX document including tables.
+
+        Args:
+            file_source: File path, byte string, or file-like object.
+
+        Returns:
+            Full plain text of the document.
+        """
         if docx is None:
-            raise ImportError("python-docx is required for DOCX extraction.")
+            raise ImportError("python-docx is required for DOCX extraction. Install with: pip install python-docx")
 
         text_parts = []
         try:
@@ -58,60 +74,98 @@ class ResumeExtractor:
             else:
                 doc = docx.Document(file_source)
 
+            # Extract paragraphs
             for para in doc.paragraphs:
-                if para.text:
+                if para.text.strip():
                     text_parts.append(para.text)
 
+            # Extract text from tables
             for table in doc.tables:
                 for row in table.rows:
-                    row_text = " | ".join(cell.text.strip() for cell in row.cells if cell.text.strip())
+                    row_text = " | ".join(
+                        cell.text.strip() for cell in row.cells if cell.text.strip()
+                    )
                     if row_text:
                         text_parts.append(row_text)
-        except Exception as e:
-            raise ValueError(f"Failed to extract text from DOCX: {str(e)}") from e
+        except Exception as exc:
+            raise ValueError(f"Failed to extract text from DOCX: {exc}") from exc
 
         return "\n".join(text_parts).strip()
 
     @staticmethod
-    def extract_from_txt(file_source: Union[str, BinaryIO, bytes]) -> str:
-        """Extract text from plain text file or bytes with UTF-8/Latin fallback."""
+    def extract_from_txt(file_source: Union[str, "os.PathLike[str]", BinaryIO, bytes]) -> str:
+        """Extract text from a plain text file with UTF-8 / Latin-1 fallback.
+
+        Args:
+            file_source: File path, byte string, or file-like object.
+
+        Returns:
+            Plain text content.
+        """
         if isinstance(file_source, (str, os.PathLike)) and os.path.exists(str(file_source)):
-            with open(file_source, "r", encoding="utf-8", errors="ignore") as f:
-                return f.read().strip()
+            with open(file_source, "r", encoding="utf-8", errors="ignore") as fh:
+                return fh.read().strip()
         elif isinstance(file_source, bytes):
             try:
-                return file_source.decode("utf-8")
+                return file_source.decode("utf-8").strip()
             except UnicodeDecodeError:
-                return file_source.decode("latin-1", errors="ignore")
+                return file_source.decode("latin-1", errors="ignore").strip()
         elif hasattr(file_source, "read"):
             content = file_source.read()
             if isinstance(content, bytes):
                 try:
-                    return content.decode("utf-8")
+                    return content.decode("utf-8").strip()
                 except UnicodeDecodeError:
-                    return content.decode("latin-1", errors="ignore")
-            return str(content)
-        return str(file_source)
+                    return content.decode("latin-1", errors="ignore").strip()
+            return str(content).strip()
+        return str(file_source).strip()
 
     @classmethod
-    def extract(cls, file_source: Union[str, BinaryIO, bytes], filename: str = "") -> str:
-        """Auto-detect format by extension or header and extract text."""
+    def extract(
+        cls,
+        file_source: Union[str, "os.PathLike[str]", BinaryIO, bytes],
+        filename: str = "",
+    ) -> str:
+        """Auto-detect format by extension and dispatch to the right extractor.
+
+        Args:
+            file_source: File path, byte string, or file-like object.
+            filename: Optional filename hint to determine format.
+
+        Returns:
+            Extracted plain text.
+        """
         fname = filename.lower()
-        if isinstance(file_source, str) and not fname and os.path.exists(file_source):
-            fname = file_source.lower()
+        if isinstance(file_source, (str, os.PathLike)) and not fname:
+            fname = str(file_source).lower()
 
         if fname.endswith(".pdf"):
             return cls.extract_from_pdf(file_source)
-        elif fname.endswith(".docx") or fname.endswith(".doc"):
+        elif fname.endswith((".docx", ".doc")):
             return cls.extract_from_docx(file_source)
-        elif fname.endswith(".txt") or fname.endswith(".rtf") or fname.endswith(".md"):
+        elif fname.endswith((".txt", ".rtf", ".md")):
             return cls.extract_from_txt(file_source)
         else:
-            # Fallback attempt
-            try:
-                return cls.extract_from_pdf(file_source)
-            except Exception:
+            # Fallback: try each format in order
+            for method in (cls.extract_from_pdf, cls.extract_from_docx, cls.extract_from_txt):
                 try:
-                    return cls.extract_from_docx(file_source)
+                    result = method(file_source)
+                    if result:
+                        return result
                 except Exception:
-                    return cls.extract_from_txt(file_source)
+                    continue
+            return ""
+
+
+if __name__ == "__main__":
+    import sys
+
+    if len(sys.argv) < 2:
+        print("Usage: python extractor.py <path_to_resume>")
+        sys.exit(1)
+
+    path = sys.argv[1]
+    text = ResumeExtractor.extract(path)
+    print(f"Extracted {len(text)} characters from '{path}'")
+    print("--- Preview (first 500 chars) ---")
+    print(text[:500])

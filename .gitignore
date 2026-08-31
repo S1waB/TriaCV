@@ -1,5 +1,6 @@
-# Python
+﻿# Python
 __pycache__/
+*.pyc
 *.py[cod]
 *$py.class
 *.so
@@ -35,8 +36,9 @@ frontend/dist/
 .npm
 *.log
 
-# Large Datasets & Models (optional / raw)
-# data/raw/
+# Large Datasets & Models
+data/raw/
+models_artifacts/
 
 # IDE & OS
 .vscode/

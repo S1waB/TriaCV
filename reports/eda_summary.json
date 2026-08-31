@@ -55,21 +55,18 @@
     "SAP Developer": 50,
     "Sales": 50
   },
-  "raw_text_metrics": {
+  "raw_metrics": {
     "avg_char_length": 2016.8656,
     "median_char_length": 2015.0,
     "avg_word_count": 257.9616,
     "min_word_count": 236,
     "max_word_count": 281
   },
-  "clean_text_metrics": {
+  "clean_metrics": {
     "avg_char_length": 1714.7928,
-    "median_char_length": 1712.0,
-    "avg_word_count": 201.868,
-    "min_word_count": 181,
-    "max_word_count": 223,
-    "total_tokens": 252335,
-    "unique_vocab_size": 606,
+    "avg_word_count": 200.52,
+    "total_tokens": 250650,
+    "unique_vocab_size": 603,
     "top_20_words": [
       {
         "word": "enterprise",

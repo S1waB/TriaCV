@@ -1,0 +1,7 @@
+Model,Type,Accuracy,Precision (W),Recall (W),F1 Weighted,F1 Macro,Train Time (s),Inference Latency (ms)
+Logistic Regression,Classic (TF-IDF),1.0,1.0,1.0,1.0,1.0,5.21,1.1
+Linear SVM,Classic (TF-IDF),1.0,1.0,1.0,1.0,1.0,0.31,0.9
+Naive Bayes,Classic (TF-IDF),1.0,1.0,1.0,1.0,1.0,0.09,1.6
+Random Forest,Classic (TF-IDF),1.0,1.0,1.0,1.0,1.0,1.75,51.0
+Sentence-BERT (MiniLM) + LR,Dense Embeddings,1.0,1.0,1.0,1.0,1.0,18.5,18.17
+DistilBERT (Fine-tuned),End-to-End Transformer,0.952,0.9663,0.952,0.945,0.945,318.9,71.6
