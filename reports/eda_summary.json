@@ -1,7 +1,15 @@
 {
-  "total_samples": 1250,
-  "num_categories": 25,
+  "total_samples": 2050,
+  "num_categories": 33,
   "categories": [
+    "Journalist",
+    "Chief Editor",
+    "Graphic Designer",
+    "Doctor",
+    "Content Writer",
+    "Content Creator",
+    "YouTuber",
+    "Gamer",
     "Electrical Engineering",
     "DotNet Developer",
     "Health and fitness",
@@ -29,6 +37,14 @@
     "Sales"
   ],
   "category_distribution": {
+    "Journalist": 100,
+    "Chief Editor": 100,
+    "Graphic Designer": 100,
+    "Doctor": 100,
+    "Content Writer": 100,
+    "Content Creator": 100,
+    "YouTuber": 100,
+    "Gamer": 100,
     "Electrical Engineering": 50,
     "DotNet Developer": 50,
     "Health and fitness": 50,
@@ -56,25 +72,33 @@
     "Sales": 50
   },
   "raw_metrics": {
-    "avg_char_length": 2016.8656,
-    "median_char_length": 2015.0,
-    "avg_word_count": 257.9616,
-    "min_word_count": 236,
+    "avg_char_length": 1306.4760975609756,
+    "median_char_length": 1943.0,
+    "avg_word_count": 166.00682926829268,
+    "min_word_count": 20,
     "max_word_count": 281
   },
   "clean_metrics": {
-    "avg_char_length": 1714.7928,
-    "avg_word_count": 200.52,
-    "total_tokens": 250650,
-    "unique_vocab_size": 603,
+    "avg_char_length": 1114.5424390243902,
+    "avg_word_count": 130.2560975609756,
+    "total_tokens": 267025,
+    "unique_vocab_size": 648,
     "top_20_words": [
+      {
+        "word": "professional",
+        "count": 4550
+      },
       {
         "word": "enterprise",
         "count": 4155
       },
       {
-        "word": "professional",
-        "count": 3750
+        "word": "experience",
+        "count": 3300
+      },
+      {
+        "word": "skill",
+        "count": 3300
       },
       {
         "word": "science",
@@ -89,11 +113,11 @@
         "count": 2793
       },
       {
-        "word": "result",
-        "count": 2500
+        "word": "solution",
+        "count": 2690
       },
       {
-        "word": "experience",
+        "word": "result",
         "count": 2500
       },
       {
@@ -102,10 +126,6 @@
       },
       {
         "word": "technical",
-        "count": 2500
-      },
-      {
-        "word": "skill",
         "count": 2500
       },
       {
@@ -121,6 +141,10 @@
         "count": 2500
       },
       {
+        "word": "maintained",
+        "count": 2346
+      },
+      {
         "word": "engineer",
         "count": 2250
       },
@@ -129,24 +153,16 @@
         "count": 2075
       },
       {
-        "word": "solution",
-        "count": 1890
+        "word": "summary",
+        "count": 2050
       },
       {
         "word": "system",
         "count": 1886
       },
       {
-        "word": "security",
-        "count": 1712
-      },
-      {
-        "word": "pipeline",
-        "count": 1702
-      },
-      {
-        "word": "operation",
-        "count": 1667
+        "word": "management",
+        "count": 1713
       }
     ]
   }

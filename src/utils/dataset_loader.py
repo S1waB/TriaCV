@@ -103,6 +103,38 @@ CATEGORIES_INFO: Dict[str, Dict[str, any]] = {
         "description": "Decentralized applications, Ethereum smart contracts, Solidity, Web3.js, Hyperledger, and cryptography.",
         "skills": ["Blockchain", "Solidity", "Ethereum", "Smart Contracts", "Web3.js", "Hyperledger Fabric", "Cryptography", "Decentralized Apps (dApps)", "Truffle", "Hardhat", "Consensus Algorithms", "Tokenomics"]
     },
+    "Journalist": {
+        "description": "Reporting, news writing, storytelling, media.",
+        "skills": ["Reporting", "Journalism", "News Writing", "Media", "Press"]
+    },
+    "Chief Editor": {
+        "description": "Editorial strategy, content management, publishing.",
+        "skills": ["Publishing", "Content Management", "Editorial", "Copy Editing", "SEO"]
+    },
+    "Graphic Designer": {
+        "description": "Visual arts, UI/UX, branding.",
+        "skills": ["Adobe Photoshop", "Illustrator", "Figma", "UI/UX", "Branding"]
+    },
+    "Doctor": {
+        "description": "Medicine, patient care, healthcare.",
+        "skills": ["Medicine", "Patient Care", "Healthcare", "Surgery", "Clinical"]
+    },
+    "Content Writer": {
+        "description": "Copywriting, blogging, SEO.",
+        "skills": ["Copywriting", "SEO", "Blogging", "Writing", "Social Media"]
+    },
+    "Content Creator": {
+        "description": "Video editing, social media marketing.",
+        "skills": ["Video Editing", "Social Media", "TikTok", "Instagram", "Marketing"]
+    },
+    "YouTuber": {
+        "description": "Vlogging, YouTube Analytics, Monetization.",
+        "skills": ["YouTube", "Video Production", "Vlogging", "Monetization", "OBS"]
+    },
+    "Gamer": {
+        "description": "eSports, Twitch streaming, competitive gaming.",
+        "skills": ["eSports", "Twitch", "OBS", "Gaming", "Discord"]
+    },
     "Testing": {
         "description": "Quality assurance, manual testing, test case design, defect tracking, black-box testing, and SDLC.",
         "skills": ["Manual Testing", "Test Case Design", "Defect Life Cycle", "Jira", "Regression Testing", "Functional Testing", "System Testing", "UAT", "STLC", "Bugzilla", "Test Execution", "API Testing"]
@@ -199,7 +231,7 @@ def generate_synthetic_dataset(num_samples_per_category: int = 50) -> pd.DataFra
     return df
 
 
-def load_or_create_dataset(raw_dir: str = "data/raw") -> pd.DataFrame:
+def _load_or_create_dataset(raw_dir: str = "data/raw") -> pd.DataFrame:
     """Load raw dataset from disk, download from mirror, or generate high-quality fallback corpus."""
     os.makedirs(raw_dir, exist_ok=True)
     raw_file = os.path.join(raw_dir, "UpdatedResumeDataSet.csv")
@@ -239,3 +271,23 @@ if __name__ == "__main__":
     print(df_data.head())
     print("Category value counts:")
     print(df_data["Category"].value_counts())
+
+
+def load_or_create_dataset(raw_dir: str = "data/raw") -> pd.DataFrame:
+    df = _load_or_create_dataset(raw_dir)
+    existing_cats = set(df["Category"].unique())
+    missing = [c for c in CATEGORIES_INFO if c not in existing_cats]
+    if missing:
+        import random
+        print(f"[DatasetLoader] Injecting synthetic data for {len(missing)} missing categories...")
+        new_rows = []
+        for cat in missing:
+            meta = CATEGORIES_INFO[cat]
+            skills = meta["skills"]
+            for _ in range(100):
+                chosen_skills = random.sample(skills, k=min(6, len(skills)))
+                resume = f"Summary: Experienced {cat} professional. Skills: {', '.join(chosen_skills)}. "
+                resume += f"Experience: Senior {cat} at TechCorp. Optimized and maintained {chosen_skills[0]} solutions."
+                new_rows.append({"Category": cat, "Resume": resume})
+        df = pd.concat([df, pd.DataFrame(new_rows)], ignore_index=True)
+    return df
