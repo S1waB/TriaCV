@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FileText, History, Grid, AlertTriangle, Sparkles, RefreshCw, BarChart2 } from "lucide-react";
 import UploadForm from "./components/UploadForm";
 import PredictionResult from "./components/PredictionResult";
@@ -92,10 +92,8 @@ export default function App() {
     <div className="app-container">
       {/* Header */}
       <header className="app-header">
-        <div className="logo-wrapper">
-          <div className="logo-icon">
-            <FileText size={24} color="#ffffff" />
-          </div>
+        <div className="logo-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <img src="/logo.png" alt="TriaCV Logo" style={{ height: '48px', objectFit: 'contain' }} />
           <div>
             <h1 className="logo-title">TriaCV</h1>
             <p className="logo-tagline">Classification & Analyse Duale de CVs (Classic SVM + Sentence-BERT)</p>
