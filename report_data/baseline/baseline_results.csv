@@ -1,0 +1,5 @@
+Model,CV_F1_Macro_Mean,CV_F1_Macro_Std,Test_Accuracy,Test_Precision_Macro,Test_Recall_Macro,Test_F1_Macro,Test_F1_Weighted,Train_Time_sec,Infer_Time_ms_per_cv
+Logistic Regression,1.0,0.0,1.0,1.0,1.0,1.0,1.0,7.02,0.0122
+Linear SVM,1.0,0.0,1.0,1.0,1.0,1.0,1.0,1.93,0.0062
+Multinomial Naive Bayes,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.23,0.0089
+Random Forest,1.0,0.0,1.0,1.0,1.0,1.0,1.0,3.53,0.1732

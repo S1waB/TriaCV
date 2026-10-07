@@ -1,0 +1,31 @@
+{
+    "Strategy_A_SBERT": {
+        "model_name": "all-MiniLM-L6-v2",
+        "embedding_dimension": 384,
+        "max_sequence_length": 256,
+        "handling_long_cvs": "Truncation to max_seq_length (256 tokens)",
+        "classifier": "Logistic Regression (C=1.0, class_weight='balanced')"
+    },
+    "Ablation": {
+        "SBERT_Lemmatized_F1_Macro": 1.0,
+        "SBERT_RawText_F1_Macro": 1.0
+    },
+    "Strategy_B_DistilBERT": {
+        "checkpoint": "distilbert-base-uncased",
+        "max_length": 512,
+        "learning_rate": 2e-05,
+        "batch_size": 4,
+        "epochs": 2,
+        "weight_decay": 0.01,
+        "warmup_ratio": 0.1,
+        "optimizer": "AdamW",
+        "early_stopping": "Not applied (reduced epochs for CPU)",
+        "device_used": "CPU",
+        "reduced_settings_note": "Trained on CPU, so epochs reduced to 2 and batch_size to 4."
+    },
+    "DistilBERT_Overfitting_Check": {
+        "Train_Loss_Final": 0.6192568523127858,
+        "Val_Loss_Final": 0.39104536175727844,
+        "Loss_Gap": -0.22821149055550738
+    }
+}

@@ -1,0 +1,116 @@
+{
+  "versions": {
+    "python": "3.11.9",
+    "os": "Windows-10-10.0.26200-SP0",
+    "packages": {
+      "pandas": "3.0.5",
+      "numpy": "2.4.6",
+      "scikit-learn": "1.9.0",
+      "transformers": "5.16.1",
+      "sentence-transformers": "6.0.0",
+      "torch": "2.13.0+cpu",
+      "flask": "3.1.3",
+      "spacy": "3.8.16",
+      "nltk": "3.10.3",
+      "pdfplumber": "0.11.10",
+      "python-docx": "1.2.0",
+      "pypdf2": "3.0.1",
+      "pdfminer.six": "20260107"
+    }
+  },
+  "hardware": {
+    "cpu": "13th Gen Intel(R) Core(TM) i7-13650HX",
+    "ram": "32 GB",
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU (6141 MiB) - Note: PyTorch is CPU-only"
+  },
+  "preprocessing": {
+    "library": "NLTK (spacy is in requirements but not used in cleaner.py)",
+    "stop_words_language": "English"
+  },
+  "split": {
+    "ratio": "80/20",
+    "stratified": true,
+    "random_seed": 42,
+    "cv_folds": 5,
+    "scoring_metric": "f1_macro"
+  },
+  "models": {
+    "sentence_bert": "all-MiniLM-L6-v2",
+    "distilbert": "distilbert-base-uncased"
+  },
+  "repo_tree": {
+    "api": "Flask API server routes and services",
+    "data": "Raw and processed datasets",
+    "frontend": "React frontend using Vite",
+    "models_artifacts": "Serialized models, vectorizers, and splits",
+    "notebooks": "Exploratory data analysis notebooks",
+    "reports": "Evaluation metrics, JSON, CSV and PNG visualizations",
+    "src": "Source code for preprocessing, models, and evaluation"
+  },
+  "flask_routes": [
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "request_format": "None",
+      "response_example": "{\"status\": \"healthy\", \"service\": \"TriaCV Classification API\", \"version\": \"1.0.0\"}"
+    },
+    {
+      "method": "POST",
+      "path": "/api/predict",
+      "request_format": "multipart/form-data (file or text) or application/json (text)",
+      "response_example": "{\"filename\": \"...\", \"classic_model\": {\"category\": \"...\", \"confidence\": 0.95}, \"advanced_model\": {\"category\": \"...\", \"confidence\": 0.96}, \"models_agreement\": true}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/history",
+      "request_format": "None",
+      "response_example": "{\"status\": \"success\", \"count\": 1, \"history\": [{\"id\": \"1234\", \"filename\": \"cv.pdf\", \"classic_category\": \"Data Scientist\"}]}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/history",
+      "request_format": "None",
+      "response_example": "{\"status\": \"success\", \"message\": \"Historique de session effacé avec succès.\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/categories",
+      "request_format": "None",
+      "response_example": "{\"status\": \"success\", \"total\": 25, \"categories\": [\"Data Science\", \"HR\"]}"
+    }
+  ],
+  "react_frontend": {
+    "build_tool": "Vite 5.4.2",
+    "components": {
+      "App.jsx": "Main application wrapper and state manager",
+      "UploadForm.jsx": "Form component for file upload and text input",
+      "PredictionResult.jsx": "Displays dual classification results",
+      "HistoryDrawer.jsx": "Sidebar drawer showing session prediction history",
+      "CategoriesModal.jsx": "Modal listing all 25 supported job categories"
+    }
+  },
+  "database": {
+    "engine": "In-memory Python List (HistoryStore)",
+    "table_names": ["_history"],
+    "columns": ["id", "timestamp", "filename", "classic_category", "classic_confidence", "classic_confidence_percentage", "advanced_category", "advanced_confidence", "advanced_confidence_percentage", "agreement", "keywords", "word_count"],
+    "what_is_stored": "Stores recent predictions made during the session"
+  },
+  "deliverables": [
+    { "item": "cleaned and documented dataset", "path": "data/processed/clean_resumes.csv", "status": "DONE" },
+    { "item": "source code of baseline and advanced models + evaluation scripts", "path": "src/models/ and src/evaluation/", "status": "DONE" },
+    { "item": "comparison table of performances", "path": "reports/final_comparison.csv", "status": "DONE" },
+    { "item": "working web application (API + UI)", "path": "api/ and frontend/", "status": "DONE" },
+    { "item": "internship report", "path": "report_data/", "status": "PARTIAL" },
+    { "item": "presentation material", "path": "None", "status": "MISSING" }
+  ],
+  "git": {
+    "commits": 7,
+    "branches": 1,
+    "first_commit_date": "Tue Sep 1 08:54:14 2026",
+    "last_commit_date": "Tue Sep 1 08:54:14 2026"
+  },
+  "flags": [
+    "SQLite is not used for the database; an in-memory python list is used instead.",
+    "Torch is installed as CPU-only (2.13.0+cpu) despite the presence of an RTX 4050 GPU."
+  ]
+}

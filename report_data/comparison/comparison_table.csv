@@ -1,0 +1,4 @@
+Model,Accuracy,Precision_Macro,Recall_Macro,F1_Macro,Train_Time_sec,Infer_Time_ms_per_cv,Size_MB
+Logistic Regression,1.0,1.0,1.0,1.0,7.02,0.0122,1.81
+Sentence-BERT + LR,1.0,1.0,1.0,1.0,20.94,12.7812,90.05
+DistilBERT Fine-tuned,1.0,1.0,1.0,1.0,1420.89,64.8535,1533.26

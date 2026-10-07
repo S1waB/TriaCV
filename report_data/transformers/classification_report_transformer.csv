@@ -1,0 +1,37 @@
+,precision,recall,f1-score,support
+Advocate,1.0,1.0,1.0,10.0
+Arts,1.0,1.0,1.0,10.0
+Automation Testing,1.0,1.0,1.0,10.0
+Blockchain,1.0,1.0,1.0,10.0
+Business Analyst,1.0,1.0,1.0,10.0
+Chief Editor,1.0,1.0,1.0,20.0
+Civil Engineer,1.0,1.0,1.0,10.0
+Content Creator,1.0,1.0,1.0,20.0
+Content Writer,1.0,1.0,1.0,20.0
+Data Science,1.0,1.0,1.0,10.0
+Database,1.0,1.0,1.0,10.0
+DevOps Engineer,1.0,1.0,1.0,10.0
+Doctor,1.0,1.0,1.0,20.0
+DotNet Developer,1.0,1.0,1.0,10.0
+ETL Developer,1.0,1.0,1.0,10.0
+Electrical Engineering,1.0,1.0,1.0,10.0
+Gamer,1.0,1.0,1.0,20.0
+Graphic Designer,1.0,1.0,1.0,20.0
+HR,1.0,1.0,1.0,10.0
+Hadoop,1.0,1.0,1.0,10.0
+Health and fitness,1.0,1.0,1.0,10.0
+Java Developer,1.0,1.0,1.0,10.0
+Journalist,1.0,1.0,1.0,20.0
+Mechanical Engineer,1.0,1.0,1.0,10.0
+Network Security Engineer,1.0,1.0,1.0,10.0
+Operations Manager,1.0,1.0,1.0,10.0
+PMO,1.0,1.0,1.0,10.0
+Python Developer,1.0,1.0,1.0,10.0
+SAP Developer,1.0,1.0,1.0,10.0
+Sales,1.0,1.0,1.0,10.0
+Testing,1.0,1.0,1.0,10.0
+Web Designing,1.0,1.0,1.0,10.0
+YouTuber,1.0,1.0,1.0,20.0
+accuracy,1.0,1.0,1.0,1.0
+macro avg,1.0,1.0,1.0,410.0
+weighted avg,1.0,1.0,1.0,410.0

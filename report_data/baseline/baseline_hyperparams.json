@@ -1,0 +1,75 @@
+{
+    "tfidf": {
+        "ngram_range": [
+            1,
+            2
+        ],
+        "min_df": 2,
+        "max_features": 30000,
+        "sublinear_tf": true
+    },
+    "models": {
+        "Logistic Regression": {
+            "search_space": {
+                "clf__C": [
+                    0.1,
+                    1.0,
+                    5.0
+                ],
+                "clf__solver": [
+                    "lbfgs"
+                ]
+            },
+            "best_params": {
+                "clf__C": 0.1,
+                "clf__solver": "lbfgs"
+            },
+            "svm_confidence_note": "Predict_proba."
+        },
+        "Linear SVM": {
+            "search_space": {
+                "clf__C": [
+                    0.1,
+                    0.5,
+                    1.0,
+                    2.0
+                ]
+            },
+            "best_params": {
+                "clf__C": 0.1
+            },
+            "svm_confidence_note": "Linear SVC decision_function is used (distance to hyperplane), uncalibrated."
+        },
+        "Multinomial Naive Bayes": {
+            "search_space": {
+                "clf__alpha": [
+                    0.01,
+                    0.1,
+                    0.5,
+                    1.0
+                ]
+            },
+            "best_params": {
+                "clf__alpha": 0.01
+            },
+            "svm_confidence_note": "Predict_proba."
+        },
+        "Random Forest": {
+            "search_space": {
+                "clf__max_depth": [
+                    null,
+                    30
+                ],
+                "clf__min_samples_split": [
+                    2,
+                    5
+                ]
+            },
+            "best_params": {
+                "clf__max_depth": null,
+                "clf__min_samples_split": 2
+            },
+            "svm_confidence_note": "Predict_proba."
+        }
+    }
+}

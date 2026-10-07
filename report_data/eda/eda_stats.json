@@ -1,0 +1,308 @@
+{
+    "total_cvs": 1250,
+    "num_columns": 2,
+    "num_categories": 25,
+    "missing_values": 0,
+    "empty_or_short": 0,
+    "duplicates": {
+        "exact": 0,
+        "near_duplicates": 0,
+        "remains_after_deduplication": 1250,
+        "deduplication_applied_before_split": false
+    },
+    "text_length_words": {
+        "min": 236,
+        "max": 281,
+        "mean": 257.96,
+        "median": 258.0,
+        "p25": 252.0,
+        "p75": 264.0
+    },
+    "distilbert_tokens": {
+        "percentage_gt_512": 0.0,
+        "percentage_gt_256": 100.0
+    },
+    "vocabulary_size": {
+        "before_preprocessing": 1169,
+        "after_preprocessing": 648
+    },
+    "top_15_terms_overall": [
+        [
+            "professional",
+            4550
+        ],
+        [
+            "enterprise",
+            4155
+        ],
+        [
+            "experience",
+            3300
+        ],
+        [
+            "skill",
+            3300
+        ],
+        [
+            "science",
+            2965
+        ],
+        [
+            "project",
+            2931
+        ],
+        [
+            "workflow",
+            2793
+        ],
+        [
+            "solution",
+            2690
+        ],
+        [
+            "result",
+            2500
+        ],
+        [
+            "high",
+            2500
+        ],
+        [
+            "technical",
+            2500
+        ],
+        [
+            "2020",
+            2500
+        ],
+        [
+            "successfully",
+            2500
+        ],
+        [
+            "day",
+            2500
+        ],
+        [
+            "maintained",
+            2346
+        ]
+    ],
+    "top_10_terms_for_5_categories": {
+        "Electrical Engineering": [
+            [
+                "electrical",
+                553
+            ],
+            [
+                "engineering",
+                310
+            ],
+            [
+                "system",
+                232
+            ],
+            [
+                "design",
+                176
+            ],
+            [
+                "circuit",
+                168
+            ],
+            [
+                "plc",
+                168
+            ],
+            [
+                "programming",
+                168
+            ],
+            [
+                "power",
+                167
+            ],
+            [
+                "enterprise",
+                159
+            ],
+            [
+                "matlab",
+                158
+            ]
+        ],
+        "DotNet Developer": [
+            [
+                "sql",
+                266
+            ],
+            [
+                "dotnet",
+                250
+            ],
+            [
+                "developer",
+                250
+            ],
+            [
+                "core",
+                216
+            ],
+            [
+                "framework",
+                187
+            ],
+            [
+                ".net",
+                166
+            ],
+            [
+                "server",
+                165
+            ],
+            [
+                "enterprise",
+                164
+            ],
+            [
+                "c#",
+                151
+            ],
+            [
+                "web",
+                151
+            ]
+        ],
+        "Health and fitness": [
+            [
+                "fitness",
+                369
+            ],
+            [
+                "training",
+                302
+            ],
+            [
+                "health",
+                250
+            ],
+            [
+                "kinesiology",
+                184
+            ],
+            [
+                "certified",
+                163
+            ],
+            [
+                "planning",
+                162
+            ],
+            [
+                "wellness",
+                160
+            ],
+            [
+                "coaching",
+                160
+            ],
+            [
+                "enterprise",
+                157
+            ],
+            [
+                "professional",
+                150
+            ]
+        ],
+        "PMO": [
+            [
+                "project",
+                414
+            ],
+            [
+                "management",
+                370
+            ],
+            [
+                "tracking",
+                320
+            ],
+            [
+                "pmo",
+                250
+            ],
+            [
+                "governance",
+                189
+            ],
+            [
+                "risk",
+                185
+            ],
+            [
+                "stakeholder",
+                181
+            ],
+            [
+                "milestone",
+                177
+            ],
+            [
+                "portfolio",
+                173
+            ],
+            [
+                "enterprise",
+                169
+            ]
+        ],
+        "Java Developer": [
+            [
+                "java",
+                398
+            ],
+            [
+                "developer",
+                250
+            ],
+            [
+                "spring",
+                240
+            ],
+            [
+                "enterprise",
+                169
+            ],
+            [
+                "professional",
+                150
+            ],
+            [
+                "boot",
+                143
+            ],
+            [
+                "apis",
+                140
+            ],
+            [
+                "hibernate",
+                138
+            ],
+            [
+                "microservices",
+                129
+            ],
+            [
+                "multithreading",
+                124
+            ]
+        ]
+    },
+    "class_imbalance": {
+        "largest_class_count": 50,
+        "smallest_class_count": 50,
+        "ratio": 1.0
+    }
+}
